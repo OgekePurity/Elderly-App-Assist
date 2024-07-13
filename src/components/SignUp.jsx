@@ -40,7 +40,7 @@ export default function SignUp() {
     }
   }, [status, authError, navigate]);
 
-  const { setEmail } = useContext(UserContext);
+  
 
   useEffect(() => {
     const container = document.getElementById("container");
