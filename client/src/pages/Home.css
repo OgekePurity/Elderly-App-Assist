@@ -1,0 +1,47 @@
+/* src/pages/Home.css */
+
+.home {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .home h1 {
+    color: #4a90e2;
+    margin-bottom: 10px;
+  }
+  
+  .home p {
+    color: #666;
+    margin-bottom: 30px;
+  }
+  
+  .feature-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  
+  .feature-item {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 20px;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .feature-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .feature-item h2 {
+    color: #4a90e2;
+    margin-bottom: 10px;
+  }
+  
+  .feature-item p {
+    color: #666;
+  }

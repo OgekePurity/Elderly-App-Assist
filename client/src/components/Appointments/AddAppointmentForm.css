@@ -1,0 +1,43 @@
+.add-appointment-form {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .add-appointment-form h2 {
+    color: #4a90e2;
+    margin-top: 0;
+  }
+  
+  .add-appointment-form div {
+    margin-bottom: 15px;
+  }
+  
+  .add-appointment-form label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+  }
+  
+  .add-appointment-form input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .add-appointment-form button {
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .add-appointment-form button:hover {
+    background-color: #357abd;
+  }

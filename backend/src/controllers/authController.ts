@@ -29,6 +29,7 @@ export const register = async (req: Request, res: Response) => {
     const payload = {
       user: {
         id: user.id,
+        
       },
     };
 

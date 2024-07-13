@@ -1,0 +1,13 @@
+/* src/pages/Auth.css */
+
+.auth-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .auth-page h1 {
+    margin-bottom: 20px;
+    color: #333;
+  }
