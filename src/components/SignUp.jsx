@@ -1,5 +1,4 @@
-import React, { useEffect, useRef } from "react";
-import { useState } from "react";
+import React, { useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "./UserContext";
 import { useDispatch, useSelector } from "react-redux";
@@ -41,6 +40,7 @@ export default function SignUp() {
     }
   }, [status, authError, navigate]);
 
+  const { setEmail } = useContext(UserContext);
 
   useEffect(() => {
     const container = document.getElementById("container");
@@ -76,12 +76,20 @@ export default function SignUp() {
   const handleCreateAccount = async (event) => {
     event.preventDefault();
     dispatch(registerUser({ name, email, password }));
+    const email = event.target.email.value;
+    setEmail(email);
+    // Add your form submission logic here
+    navigate("/home"); // Redirect to home page
   };
   
 
   const handleLogin = async (event) => {
     event.preventDefault();
     dispatch(loginUser({ email: loginEmail, password: loginPassword }));
+    const email = event.target["login-email"].value;
+    setEmail(email);
+    // Add your form submission logic here
+    navigate("/home"); // Redirect to home page
   };
   
   useEffect(() => {
@@ -108,7 +116,9 @@ export default function SignUp() {
         <div className="form-container sign-up">
           <form onSubmit={handleCreateAccount}>
             <h1>Create Account</h1>
-            <div className="social icons">{/* Social icons */}</div>
+            <div className="social icons">
+              {/* This part is useless but without it the code doesn't run */}
+            </div>
             <span>Use your email for registration</span>
             <label htmlFor="name">Name</label>
             <input
@@ -140,7 +150,9 @@ export default function SignUp() {
         <div className="form-container sign-in">
           <form onSubmit={handleLogin}>
             <h1 className="head">Login</h1>
-            <div className="social-icons">{/* Social icons */}</div>
+            <div className="social-icons">
+              {/* This part is useless but without it the code doesn't run */}
+            </div>
             <span className="span">Use your email for registration</span>
             <label htmlFor="login-email">Email</label>
             <input
