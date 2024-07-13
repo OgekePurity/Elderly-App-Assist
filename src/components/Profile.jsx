@@ -1,11 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
+import { UserContext } from "./UserContext";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashAlt } from "@fortawesome/free-solid-svg-icons"; // Correct icon import
 import logoImg from "../img/logo.png";
 import blankImg from "../img/blank.png";
 import "./profile.css";
 import "./global.css";
 
 function Profile() {
+  const { email, setEmail } = useContext(UserContext);
+
+  const handleDelete = () => {
+    setEmail("");
+  };
+
+  const Appointment = () => {
+    window.open("https://auto-notification-2.onrender.com", "_blank");
+  };
+
   return (
     <div className="wrapper">
       <div className="nav">
@@ -17,9 +30,8 @@ function Profile() {
             Home
           </Link>
           <Link to="/about">About</Link>
-          <Link to="/doctors">Doctors</Link>
-          <Link to="/appointments">Appointments</Link>
           <Link to="/blog">Blog</Link>
+          <Link to="/funzone">FUNZONE</Link>
           <Link to="/journal">Journal</Link>
         </div>
       </div>
@@ -32,7 +44,7 @@ function Profile() {
 
         <div className="holderr">
           <div className="words">My Email:</div>
-          <div className="actual">solaceacegen@gmail.com</div>
+          <div className="actual">{email}</div>
         </div>
 
         <div className="cardd">
@@ -62,22 +74,54 @@ function Profile() {
           </div>
         </div>
 
-        {/* ADD DELETE BUTTON BELOW THIS LINE */}
-        <button className="Btnn">
+        {/* DELETE BUTTON */}
+        <button className="Btnn" onClick={handleDelete}>
           <div className="signn">
-            <svg
-              viewBox="0 0 16 16"
-              className="bi bi-trash3-fill"
-              fill="currentColor"
-              height="18"
-              width="18"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5"></path>
-            </svg>
+            <FontAwesomeIcon icon={faTrashAlt} className="bi bi-trash3-fill" />{" "}
+            {/* Correct FontAwesome icon usage */}
           </div>
+          <div className="textt">Delete Profile</div>
+        </button>
 
-          <div className="textt">Delete</div>
+        {/* FORM SUBMISSION */}
+
+        <div className="form-containerr">
+          <form
+            className="formm"
+            action="https://formspree.io/f/xldrddbn"
+            method="POST"
+          >
+            <div className="form-groupp">
+              <label htmlFor="email">Your Email</label>
+              <input
+                required
+                name="email"
+                id="email"
+                type="text"
+                placeholder="youremail@gmail.com"
+              />
+            </div>
+            <div className="form-groupp">
+              <label htmlFor="textarea">How Can We Help You?</label>
+              <textarea
+                required
+                cols="50"
+                rows="10"
+                id="textarea"
+                name="textarea"
+              >
+                {" "}
+              </textarea>
+            </div>
+            <button type="submit" className="form-submit-btnn">
+              Submit
+            </button>
+          </form>
+        </div>
+
+        {/* BOOK APPOINTMENT BUTTON */}
+        <button className="appbutton" onClick={Appointment}>
+          <span className="appbutton-content">Book Appointment </span>
         </button>
       </div>
     </div>
