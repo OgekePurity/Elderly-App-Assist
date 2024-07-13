@@ -12,7 +12,7 @@ const path_1 = __importDefault(require("path"));
 const errorHandler_1 = __importDefault(require("./middlewares/errorHandler"));
 dotenv_1.default.config();
 const app = (0, express_1.default)();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 4000;
 app.use((0, cookie_parser_1.default)());
 app.use('/', express_1.default.static(path_1.default.join(__dirname, 'public')));
 app.use(express_1.default.json());
@@ -46,3 +46,4 @@ mongoose_1.default.connect(MONGO_URI)
     .catch((err) => {
     console.log(err);
 });
+exports.default = app;

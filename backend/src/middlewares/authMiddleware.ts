@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 
 interface AuthRequest extends Request {
-  user?: any;
+  user: any;
 }
 
 const authMiddleware = (req: AuthRequest, res: Response, next: NextFunction) => {
@@ -14,7 +14,7 @@ const authMiddleware = (req: AuthRequest, res: Response, next: NextFunction) => 
 
   const token = (authHeader as string).split(' ')[1];
 
-  jwt.verify(token, process.env.JWT_ACCESS_SECRET as string, (err: jwt.JsonWebTokenError | null, decoded: jwt.JwtPayload | string | undefined) => {
+  jwt.verify(token, process.env.JWT_ACCESS_TOKEN as string, (err: jwt.JsonWebTokenError | null, decoded: jwt.JwtPayload | string | undefined) => {
     if (err) {
       res.status(403).json({ message: 'Forbidden' });
     } else {

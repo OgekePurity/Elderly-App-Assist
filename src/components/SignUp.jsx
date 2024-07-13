@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "./UserContext";
 import { useDispatch, useSelector } from "react-redux";
 import { registerUser, loginUser } from "../redux/Slices/authSlice";
 import "./signup.css";
@@ -10,9 +11,10 @@ import "./global.css";
 export default function SignUp() {
   const dispatch = useDispatch();
   const { status, authError, accessToken, refreshToken} = useSelector((state) => state.auth);
+  const { setEmail } = useContext(UserContext);
   const navigate = useNavigate();
   const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const [email, setEmaill] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null); // Add this line
   const [loginEmail, setLoginEmail] = useState("");
@@ -24,7 +26,7 @@ export default function SignUp() {
   };
 
   const handleEmailChange = (event) => {
-    setEmail(event.target.value);
+    setEmaill(event.target.value);
   };
 
   const handlePasswordChange = (event) => {

@@ -8,7 +8,7 @@ import errorHandler from './middlewares/errorHandler';
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 4000;
 app.use(cookieParser());
 app.use('/', express.static(path.join(__dirname, 'public')));
 app.use(express.json());
@@ -46,3 +46,4 @@ mongoose.connect(MONGO_URI)
   .catch((err) => {
     console.log(err)
   }) 
+export default app;
