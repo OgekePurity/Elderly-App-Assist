@@ -1,10 +1,44 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { registerUser, loginUser } from "../redux/Slices/authSlice";
 import "./signup.css";
 import "./global.css";
 
+
 export default function SignUp() {
+  const dispatch = useDispatch();
+  const { status, authError, accessToken, refreshToken} = useSelector((state) => state.auth);
   const navigate = useNavigate();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(null); // Add this line
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
+  const errorBoxRef = useRef(null);
+
+  const handleNameChange = (event) => {
+    setName(event.target.value);
+  };
+
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+  };
+
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
+
+  useEffect(() => {
+    if (status === "succeeded") {
+      navigate("/home");
+    } else if (status === "failed") {
+      setError(authError);
+    }
+  }, [status, authError, navigate]);
+
 
   useEffect(() => {
     const container = document.getElementById("container");
@@ -37,36 +71,67 @@ export default function SignUp() {
     };
   }, []);
 
-  const handleCreateAccount = (event) => {
+  const handleCreateAccount = async (event) => {
     event.preventDefault();
-    // Add your form submission logic here
-    navigate("/home"); // Redirect to home page
+    dispatch(registerUser({ name, email, password }));
   };
+  
 
-  const handleLogin = (event) => {
+  const handleLogin = async (event) => {
     event.preventDefault();
-    // Add your form submission logic here
-    navigate("/home"); // Redirect to home page
+    dispatch(loginUser({ email: loginEmail, password: loginPassword }));
   };
+  
+  useEffect(() => {
+    if (accessToken) {
+      console.log("Access Token:", accessToken );
+
+      setError(null);
+    }
+  }, [accessToken]);
+
+  useEffect(() => {
+    if (refreshToken) {
+
+      console.log("Refresh Token:", refreshToken );
+
+      setError(null);
+    }
+  }, [refreshToken]);
 
   return (
     <div className="signup-page">
       <div className="container" id="container">
+        
         <div className="form-container sign-up">
           <form onSubmit={handleCreateAccount}>
             <h1>Create Account</h1>
             <div className="social icons">{/* Social icons */}</div>
             <span>Use your email for registration</span>
             <label htmlFor="name">Name</label>
-            <input id="name" type="text" placeholder="Your Name"></input>
+            <input
+              id="name"
+              type="text"
+              placeholder="Your Name"
+              value={name}
+              onChange={handleNameChange}
+            ></input>
             <label htmlFor="email">Email</label>
             <input
               id="email"
               type="email"
               placeholder="youremail@gmail.com"
+              value={email}
+              onChange={handleEmailChange}
             ></input>
             <label htmlFor="password">Password</label>
-            <input id="password" type="password" placeholder="Password"></input>
+            <input
+              id="password"
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={handlePasswordChange}
+            ></input>
             <button className="btnbtn">Create Account</button>
           </form>
         </div>
@@ -80,12 +145,16 @@ export default function SignUp() {
               id="login-email"
               type="email"
               placeholder="youremail@gmail.com"
+              value={loginEmail}
+              onChange={(event) => setLoginEmail(event.target.value)}
             ></input>
             <label htmlFor="login-password">Password</label>
             <input
               id="login-password"
               type="password"
               placeholder="Password"
+              value={loginPassword}
+              onChange={(event) => setLoginPassword(event.target.value)}
             ></input>
             <button className="loginbtn">Login</button>
           </form>
