@@ -22,7 +22,7 @@ import solaceImg from "../img/solace.jpg";
 import lizImg from "../img/liz.jpeg";
 import logoImg from "../img/logo.png";
 import bulbImg from "../img/bulb.png";
-import starImg from "../img/star.png";
+import starriImg from "../img/starri.png";
 import "./about.css";
 import "./global.css";
 
@@ -181,7 +181,7 @@ function About() {
             </span>
           </h1>
           <img
-            src={starImg}
+            src={starriImg}
             width="650"
             height="531"
             alt="Starlets Logo"
