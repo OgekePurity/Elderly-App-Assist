@@ -8,6 +8,7 @@ import Blog from "./components/Blog";
 import About from "./components/About";
 import Profile from "./components/Profile";
 import Funzone from "./components/Funzone";
+import Journal from './pages/Journal'
 import { UserProvider } from "./components/UserContext";
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
           <Route exact path="/about" element={<About />} />
           <Route exact path="/profile" element={<Profile />} />
           <Route exact path="/funzone" element={<Funzone />} />
+          <Route exact path="/journal" element={<Journal />} />
         </Routes>
       </Router>
     </UserProvider>

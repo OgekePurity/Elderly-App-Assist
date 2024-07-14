@@ -38,14 +38,14 @@ describe('Refresh Access Token Controller', () => {
         });
         const refreshToken = jsonwebtoken_1.default.sign({ user: { id: user.id } }, process.env.JWT_REFRESH_TOKEN, { expiresIn: '10d' });
         const response = yield (0, supertest_1.default)(server_1.default)
-            .post('/api/auth/refresh-token')
+            .post('/api/auth/refresh')
             .set('Cookie', `refreshToken=${refreshToken}`)
             .send();
         expect(response.status).toBe(200);
         expect(response.body.accessToken).toBeDefined();
     }));
     it('should return 401 if no refresh token is provided', () => __awaiter(void 0, void 0, void 0, function* () {
-        const response = yield (0, supertest_1.default)(server_1.default).post('/api/auth/refresh-token').send();
+        const response = yield (0, supertest_1.default)(server_1.default).post('/api/auth/refresh').send();
         expect(response.status).toBe(401);
         expect(response.body.message).toBe('No refresh token provided');
     }));

@@ -2,6 +2,8 @@ import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import authRoutes from './routes/authRoute';
+import journalRoutes from './routes/journalRoutes'
+import commmunityRoutes from './routes/communityRoutes'
 import cookieParser from 'cookie-parser';
 import path from 'path';
 import errorHandler from './middlewares/errorHandler';
@@ -14,6 +16,8 @@ app.use('/', express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 
 app.use('/api/auth', authRoutes);
+app.use('/api/journals', journalRoutes)
+app.use('api/communities', commmunityRoutes)
 /*app.use('/api/schedules', scheduleRoutes);
 app.use('/api/medications', medicationRoutes);
 app.use('/api/appointments', appointmentRoutes);

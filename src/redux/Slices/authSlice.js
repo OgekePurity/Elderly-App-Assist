@@ -59,7 +59,7 @@ const authSlice = createSlice({
         state.status = 'loading';
       })
       .addCase(registerUser.fulfilled, (state, { payload }) => {
-        state.status = 'succeeded';
+        state.status = 'succeeded1';
         state.user = payload.user;
         state.accessToken = payload.accessToken; // Update this line
       })
@@ -71,7 +71,7 @@ const authSlice = createSlice({
         state.status = 'loading';
       })
       .addCase(loginUser.fulfilled, (state, { payload }) => {
-        state.status = 'succeeded';
+        state.status = 'succeeded2';
         state.user = payload.user;
         state.accessToken = payload.accessToken; // Assuming accessToken is returned from server
         state.refreshToken = payload.refreshToken;// Update this line

@@ -1,4 +1,6 @@
 import React, { useEffect, useContext } from "react";
+import{ useState } from 'react'
+import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "./UserContext";
 import { useDispatch, useSelector } from "react-redux";
@@ -33,8 +35,20 @@ export default function SignUp() {
   };
 
   useEffect(() => {
-    if (status === "succeeded") {
+    if (status === "succeeded1") {
       navigate("/home");
+      setEmail(email); 
+
+    } else if (status === "failed") {
+      setError(authError);
+    }
+  }, [status, authError, navigate, email, setEmail]);
+
+  useEffect(() => {
+    if (status === "succeeded2") {
+      
+      navigate("/home");
+
     } else if (status === "failed") {
       setError(authError);
     }
@@ -76,20 +90,16 @@ export default function SignUp() {
   const handleCreateAccount = async (event) => {
     event.preventDefault();
     dispatch(registerUser({ name, email, password }));
-    const email = event.target.email.value;
-    setEmail(email);
-    // Add your form submission logic here
-    navigate("/home"); // Redirect to home page
+    
   };
-  
+
 
   const handleLogin = async (event) => {
     event.preventDefault();
     dispatch(loginUser({ email: loginEmail, password: loginPassword }));
     const email = event.target["login-email"].value;
     setEmail(email);
-    // Add your form submission logic here
-    navigate("/home"); // Redirect to home page
+    
   };
   
   useEffect(() => {

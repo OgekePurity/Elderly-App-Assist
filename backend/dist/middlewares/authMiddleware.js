@@ -10,7 +10,7 @@ const authMiddleware = (req, res, next) => {
         return res.status(401).json({ message: 'Unauthorized' });
     }
     const token = authHeader.split(' ')[1];
-    jsonwebtoken_1.default.verify(token, process.env.JWT_ACCESS_SECRET, (err, decoded) => {
+    jsonwebtoken_1.default.verify(token, process.env.JWT_ACCESS_TOKEN, (err, decoded) => {
         if (err) {
             res.status(403).json({ message: 'Forbidden' });
         }
