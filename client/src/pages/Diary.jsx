@@ -27,9 +27,9 @@ const Journal = () => {
             Home
           </Link>
           <Link to="/about">About</Link>
-          <Link to="/doctors">Doctors</Link>
-          <Link to="/journal">Journal</Link>
           <Link to="/blog">Blog</Link>
+          <Link to="/journal">Journal</Link>
+          <Link to="/funzone">Funzone</Link>
           <Link to="/Profile">PROFILE</Link>
         </div>
       </div>

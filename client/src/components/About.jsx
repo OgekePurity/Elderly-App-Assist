@@ -135,9 +135,9 @@ function About() {
             Home
           </Link>
           <Link to="/about">About</Link>
-          <Link to="/doctors">Doctors</Link>
-          <Link to="/journal">JOURNAL</Link>
           <Link to="/blog">Blog</Link>
+          <Link to="/journal">JOURNAL</Link>
+          <Link to="/funzone">Funzone</Link>
           <Link to="/profile">PROFILE</Link>
         </div>
       </div>

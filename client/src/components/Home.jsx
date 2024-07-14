@@ -40,12 +40,11 @@ function Home() {
             Home
           </Link>
           <Link to="/about">About</Link>
-          <Link to="/doctors">Doctors</Link>
+          {/* <Link to="/doctors">Doctors</Link> */}
           <Link to="/journal">Journal</Link>
           <Link to="/blog">Blog</Link>
           <Link to="/Profile">Profile</Link>
-          <Link to="/appointments">Appointments</Link>
-          <Link to="/community">Community</Link>
+          <Link to="/funzone">Funzone</Link>
           <Link to="/medications">Medications</Link>
         </div>
       </div>
@@ -214,11 +213,11 @@ function Home() {
             HOME
           </Link>
           <Link to="/about">ABOUT</Link>
-          <Link to="/doctors">DOCTORS</Link>
           <Link to="/journal">JOURNAL</Link>
           <Link to="/blog">BLOG</Link>
-          <Link to="/profile">PROFILE</Link>
+          <Link to="/funzone">FUNZONE</Link>
           <Link to="/medications">MEDICATIONS</Link>
+          <Link to="/profile">PROFILE</Link>
         </div>
       </div>
     </div>

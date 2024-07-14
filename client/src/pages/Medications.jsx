@@ -27,13 +27,11 @@ function Medications() {
             Home
           </Link>
           <Link to="/about">About</Link>
-          <Link to="/doctors">Doctors</Link>
-          <Link to="/journal">Journal</Link>
           <Link to="/blog">Blog</Link>
-          <Link to="/Profile">Profile</Link>
-          <Link to="/appointments">Appointments</Link>
-          <Link to="/community">Community</Link>
+          <Link to="/journal">Journal</Link>
+          <Link to="/funzone">Funzone</Link>
           <Link to="/medications">Medications</Link>
+          <Link to="/Profile">Profile</Link>
         </div>
       </div>
     <div className="medications">

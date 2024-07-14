@@ -31,8 +31,8 @@ function Profile() {
           </Link>
           <Link to="/about">About</Link>
           <Link to="/blog">Blog</Link>
-          <Link to="/funzone">FUNZONE</Link>
           <Link to="/journal">Journal</Link>
+          <Link to="/funzone">FUNZONE</Link>
         </div>
       </div>
 
