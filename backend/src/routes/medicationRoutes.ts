@@ -4,9 +4,9 @@ import authMiddleware from '../middlewares/authMiddleware';
 
 const router = Router();
 
-router.get('/', authMiddleware, getMedications);
-router.post('/', authMiddleware, addMedication);
-router.put('/:id', authMiddleware, updateMedication);
-router.delete('/:id', authMiddleware, deleteMedication);
+router.get('/',  getMedications);
+router.post('/',  addMedication);
+router.put('/:id',  updateMedication);
+router.delete('/:id',  deleteMedication);
 
 export default router;

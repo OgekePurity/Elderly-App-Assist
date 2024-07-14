@@ -10,6 +10,7 @@ import Profile from "./components/Profile";
 import Journal from './pages/Journal';
 import Appointments from './pages/Appointments'
 import Community from './pages/Community'
+import Medications from './pages/Medications'
 
 function App() {
   useEffect(() => {
@@ -30,6 +31,7 @@ function App() {
         <Route exact path="/journal" element={<Journal />} />
         <Route exact path="/appointments" element={<Appointments />} />
         <Route exact path="/community" element={<Community />} />
+        <Route exact path="/medications" element={<Medications />} />
       </Routes>
     </Router>
   );

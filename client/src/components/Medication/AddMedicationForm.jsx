@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addMedication } from '../../features/medications/medicationsSlice';
+import { addMedication } from '../../features/Medications/medicationsSlice';
 import './AddMedicationForm.css';
 
 const AddMedicationForm = ({ userId }) => {

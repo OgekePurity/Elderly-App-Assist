@@ -46,6 +46,7 @@ function Home() {
           <Link to="/Profile">Profile</Link>
           <Link to="/appointments">Appointments</Link>
           <Link to="/community">Community</Link>
+          <Link to="/medications">Medications</Link>
         </div>
       </div>
 
@@ -217,6 +218,7 @@ function Home() {
           <Link to="/journal">JOURNAL</Link>
           <Link to="/blog">BLOG</Link>
           <Link to="/profile">PROFILE</Link>
+          <Link to="/medications">MEDICATIONS</Link>
         </div>
       </div>
     </div>

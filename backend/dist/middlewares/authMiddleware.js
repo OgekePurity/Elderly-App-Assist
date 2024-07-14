@@ -11,7 +11,6 @@ const authMiddleware = (req, res, next) => {
         return res.status(401).json({ message: 'Unauthorized' });
     }
     const token = authHeader.split(' ')[1];
-    console.log('Token received:', token);
     const secret = process.env.JWT_ACCESS_TOKEN;
     if (!secret) {
         console.error('JWT secret is not set.');

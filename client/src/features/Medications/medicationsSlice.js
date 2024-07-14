@@ -1,5 +1,3 @@
-// src/features/medications/medicationsSlice.js
-
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
@@ -11,10 +9,7 @@ const initialState = {
 
 // Thunk for fetching medications
 export const fetchMedications = createAsyncThunk('medications/fetchMedications', async () => {
-  const token = localStorage.getItem('token');
-  const response = await axios.get('http://localhost:5000/api/medications', {
-    headers: { Authorization: `Bearer ${token}` },
-  });
+  const response = await axios.get('http://localhost:5000/api/medications');
   return response.data;
 });
 
@@ -22,10 +17,7 @@ export const fetchMedications = createAsyncThunk('medications/fetchMedications',
 export const addMedication = createAsyncThunk(
   'medications/addMedication',
   async (newMedication) => {
-    const token = localStorage.getItem('token');
-    const response = await axios.post('http://localhost:5000/api/medications', newMedication, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
+    const response = await axios.post('http://localhost:5000/api/medications', newMedication);
     return response.data;
   }
 );

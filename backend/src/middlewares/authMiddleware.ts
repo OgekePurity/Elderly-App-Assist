@@ -1,11 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
+import { IUser } from '../models/User';
 
-interface AuthRequest extends Request {
-  user: any;
-}
-
-const authMiddleware = (req: AuthRequest, res: Response, next: NextFunction) => {
+const authMiddleware = (req: Request, res: Response, next: NextFunction) => {
   const authHeader = req.headers.authorization || req.headers.Authorization;
 
   if (!authHeader || !(authHeader as string).toLowerCase().startsWith('bearer ')) {
@@ -14,7 +11,6 @@ const authMiddleware = (req: AuthRequest, res: Response, next: NextFunction) => 
   }
 
   const token = (authHeader as string).split(' ')[1];
-  console.log('Token received:', token);
   const secret = process.env.JWT_ACCESS_TOKEN;
 
   if (!secret) {
@@ -27,7 +23,7 @@ const authMiddleware = (req: AuthRequest, res: Response, next: NextFunction) => 
       console.error('JWT verification error:', err);
       return res.status(403).json({ message: 'Forbidden' });
     } else {
-      req.user = decoded;
+      req.user = decoded as IUser;
       console.log('User authenticated:', req.user);
       next();
     }

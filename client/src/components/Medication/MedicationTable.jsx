@@ -1,4 +1,3 @@
-// Update your MedicationTable component
 import React from 'react';
 import './MedicationTable.css'
 

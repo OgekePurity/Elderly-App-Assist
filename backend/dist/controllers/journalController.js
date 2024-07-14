@@ -15,14 +15,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteJournalEntry = exports.updateJournalEntry = exports.addJournalEntry = exports.getJournalEntries = void 0;
 const JournalEntry_1 = __importDefault(require("../models/JournalEntry"));
 const getJournalEntries = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    var _a;
     try {
-        if (!req.user || !req.user.id) {
-            return res.status(400).json({ error: 'User not authenticated' });
-        }
-        const journalEntries = yield JournalEntry_1.default.find({ user: req.user.id });
-        if (!journalEntries || journalEntries.length === 0) {
-            return res.status(404).json({ error: 'No journal entries found' });
-        }
+        const journalEntries = yield JournalEntry_1.default.find({ user: (_a = req.user) === null || _a === void 0 ? void 0 : _a.id });
         res.status(200).json(journalEntries);
     }
     catch (error) {
@@ -34,8 +29,8 @@ exports.getJournalEntries = getJournalEntries;
 const addJournalEntry = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { title, content } = req.body;
-        if (!title || !content) {
-            return res.status(400).json({ error: 'Title and content are required' });
+        if (!req.user || !req.user.id) {
+            return res.status(401).json({ message: 'User not authenticated' });
         }
         const journalEntry = new JournalEntry_1.default({ user: req.user.id, title, content });
         yield journalEntry.save();
@@ -49,16 +44,15 @@ const addJournalEntry = (req, res) => __awaiter(void 0, void 0, void 0, function
 exports.addJournalEntry = addJournalEntry;
 const updateJournalEntry = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { id } = req.params;
         const { title, content } = req.body;
-        if (!title || !content) {
-            return res.status(400).json({ error: 'Title and content are required' });
+        if (!req.user || !req.user.id) {
+            return res.status(401).json({ message: 'User not authenticated' });
         }
-        const updatedEntry = yield JournalEntry_1.default.findOneAndUpdate({ _id: id, user: req.user.id }, { title, content }, { new: true, runValidators: true });
-        if (!updatedEntry) {
-            return res.status(404).json({ error: 'Journal entry not found or you do not have permission' });
+        const updatedJournalEntry = yield JournalEntry_1.default.findOneAndUpdate({ _id: req.params.id, user: req.user.id }, { title, content }, { new: true });
+        if (!updatedJournalEntry) {
+            return res.status(404).json({ error: 'Journal entry not found' });
         }
-        res.status(200).json({ message: 'Journal entry updated successfully', updatedEntry });
+        res.status(200).json({ message: 'Journal entry updated successfully', journalEntry: updatedJournalEntry });
     }
     catch (error) {
         console.error('Error updating journal entry:', error);
@@ -68,10 +62,12 @@ const updateJournalEntry = (req, res) => __awaiter(void 0, void 0, void 0, funct
 exports.updateJournalEntry = updateJournalEntry;
 const deleteJournalEntry = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { id } = req.params;
-        const deletedEntry = yield JournalEntry_1.default.findOneAndDelete({ _id: id, user: req.user.id });
-        if (!deletedEntry) {
-            return res.status(404).json({ error: 'Journal entry not found or you do not have permission' });
+        if (!req.user || !req.user.id) {
+            return res.status(401).json({ message: 'User not authenticated' });
+        }
+        const deletedJournalEntry = yield JournalEntry_1.default.findOneAndDelete({ _id: req.params.id, user: req.user.id });
+        if (!deletedJournalEntry) {
+            return res.status(404).json({ error: 'Journal entry not found' });
         }
         res.status(200).json({ message: 'Journal entry deleted successfully' });
     }
