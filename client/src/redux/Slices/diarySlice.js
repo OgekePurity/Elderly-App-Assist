@@ -3,23 +3,23 @@ import axios from 'axios';
 
 // Thunks for async actions
 export const fetchJournals = createAsyncThunk('api/journals', async () => {
-  const response = await axios.get('http://localhost:5000/api/journals');
+  const response = await axios.get('https://elderly-app-assist-8.onrender.com/api/journals');
   return response.data;
 });
 
 export const addJournal = createAsyncThunk('journals/Journal', async (journal) => {
-  const response = await axios.post('http://localhost:5000/api/journals/journal', journal);
+  const response = await axios.post('https://elderly-app-assist-8.onrender.com/api/journals/journal', journal);
   return response.data;
 });
 
 export const updateJournal = createAsyncThunk('journals/updateJournal', async (journal) => {
   const { id, ...journalData } = journal; // Destructure the ID from journal object
-  const response = await axios.put(`http://localhost:5000/api/journals/${id}`, journalData); // Use journalData for PUT request
+  const response = await axios.put(`https://elderly-app-assist-8.onrender.com/api/journals/${id}`, journalData); // Use journalData for PUT request
   return response.data;
 });
 
 export const deleteJournal = createAsyncThunk('/journals/deleteJournal', async (id) => {
-  await axios.delete(`http://localhost:5000/api/journals/${id}`);
+  await axios.delete(`https://elderly-app-assist-8.onrender.com/api/journals/${id}`);
   return id;
 });
 
