@@ -15,7 +15,7 @@ import cors from 'cors';
 
 const app = express();
 connectDB();
-app.use(cors({ origin: 'http://localhost:5173' }));
+app.use(cors());
 const PORT = process.env.PORT || 5000;
 app.use(cookieParser());
 app.use('/', express.static(path.join(__dirname, 'public')));
