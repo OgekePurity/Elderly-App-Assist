@@ -9,7 +9,7 @@ const initialState = {
 
 // Thunk for fetching medications
 export const fetchMedications = createAsyncThunk('medications/fetchMedications', async () => {
-  const response = await axios.get('http://localhost:5000/api/medications');
+  const response = await axios.get('https://elderly-app-assist-8.onrender.com/api/medications');
   return response.data;
 });
 
@@ -17,7 +17,7 @@ export const fetchMedications = createAsyncThunk('medications/fetchMedications',
 export const addMedication = createAsyncThunk(
   'medications/addMedication',
   async (newMedication) => {
-    const response = await axios.post('http://localhost:5000/api/medications', newMedication);
+    const response = await axios.post('https://elderly-app-assist-8.onrender.com/api/medications', newMedication);
     return response.data;
   }
 );
