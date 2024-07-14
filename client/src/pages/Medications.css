@@ -1,0 +1,137 @@
+.medications {
+    max-width: 800px;
+    margin: 0 auto;
+    padding-top: 140px;
+
+    
+  }
+  
+  .medications h1 {
+    color: #333;
+    border-bottom: 2px solid #4a90e2;
+    padding-bottom: 10px;
+  }
+  .nav {
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 1rem 0;
+    z-index: 1000;
+    background: #fff;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .logo {
+    padding-left: 2rem;
+  }
+  
+  .logo img {
+    width: 100px;
+    height: auto;
+  }
+  
+  .links {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 2rem;
+    transition: 0.5s;
+    position: relative;
+  }
+  
+  .links a {
+    color: #111111;
+    font-size: 1.2rem;
+    margin: 0 10px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    position: relative;
+    text-decoration: none;
+  }
+  
+  .links a:hover {
+    color: #512da8;
+  }
+  
+  .links a::after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 3px;
+    top: 100%;
+    bottom: -3px;
+    left: 0;
+    transition: transform 0.5s, width 0.5s;
+    transform: scaleX(0);
+    transform-origin: right;
+    background-color: #512da8;
+  }
+  
+  .links a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+    width: 100%;
+  }
+  .nav {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1rem 0;
+  z-index: 1000;
+  background: #fff;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  padding-left: 2rem;
+}
+
+.logo img {
+  width: 100px;
+  height: auto;
+}
+
+.links {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 2rem;
+  transition: 0.5s;
+  position: relative;
+}
+
+.links a {
+  color: #111111;
+  font-size: 1.2rem;
+  margin: 0 10px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  position: relative;
+  text-decoration: none;
+}
+
+.links a:hover {
+  color: #512da8;
+}
+
+.links a::after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 3px;
+  top: 100%;
+  bottom: -3px;
+  left: 0;
+  transition: transform 0.5s, width 0.5s;
+  transform: scaleX(0);
+  transform-origin: right;
+  background-color: #512da8;
+}
+
+.links a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+  width: 100%;
+}

@@ -1,0 +1,20 @@
+/* Add to your CSS file */
+
+.medication-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.medication-table th, .medication-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.medication-table th {
+  background-color: #f0f0f0;
+}
+
+.medication-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
