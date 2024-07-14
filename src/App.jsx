@@ -10,6 +10,7 @@ import Profile from "./components/Profile";
 import Funzone from "./components/Funzone";
 import Journal from './pages/Journal'
 import { UserProvider } from "./components/UserContext";
+import ProtectedRoute from "./PrivateRoute";
 
 function App() {
   useEffect(() => {
@@ -24,12 +25,12 @@ function App() {
       <Router>
         <Routes>
           <Route exact path="/" element={<SignUp />} />
-          <Route exact path="/home" element={<Home />} />
-          <Route exact path="/blog" element={<Blog />} />
-          <Route exact path="/about" element={<About />} />
-          <Route exact path="/profile" element={<Profile />} />
-          <Route exact path="/funzone" element={<Funzone />} />
-          <Route exact path="/journal" element={<Journal />} />
+          <Route exact path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
+          <Route exact path="/blog" element={<ProtectedRoute><Blog /></ProtectedRoute>} />
+          <Route exact path="/about" element={<ProtectedRoute><About /></ProtectedRoute>} />
+          <Route exact path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+          <Route exact path="/funzone" element={<ProtectedRoute><Funzone /></ProtectedRoute>} />
+          <Route exact path="/journal" element={<ProtectedRoute><Journal /></ProtectedRoute>} />
         </Routes>
       </Router>
     </UserProvider>

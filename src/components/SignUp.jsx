@@ -38,7 +38,7 @@ export default function SignUp() {
     if (status === "succeeded1") {
       navigate("/home");
       setEmail(email); 
-
+      
     } else if (status === "failed") {
       setError(authError);
     }

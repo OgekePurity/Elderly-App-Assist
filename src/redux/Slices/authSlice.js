@@ -1,4 +1,3 @@
-// redux/Slices/authSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 // Register user
@@ -49,8 +48,8 @@ const authSlice = createSlice({
     user: null,
     status: null,
     authError: null,
-    accessToken: null,
-    refreshToken: null
+    accessToken: localStorage.getItem('accessToken') || null,
+    refreshToken: localStorage.getItem('refreshToken') || null,
   },
   reducers: {},
   extraReducers: (builder) => {
@@ -61,7 +60,8 @@ const authSlice = createSlice({
       .addCase(registerUser.fulfilled, (state, { payload }) => {
         state.status = 'succeeded1';
         state.user = payload.user;
-        state.accessToken = payload.accessToken; // Update this line
+        state.accessToken = payload.accessToken;
+        localStorage.setItem('accessToken', payload.accessToken); // Store accessToken in localStorage
       })
       .addCase(registerUser.rejected, (state, { payload }) => {
         state.status = 'failed';
@@ -73,8 +73,10 @@ const authSlice = createSlice({
       .addCase(loginUser.fulfilled, (state, { payload }) => {
         state.status = 'succeeded2';
         state.user = payload.user;
-        state.accessToken = payload.accessToken; // Assuming accessToken is returned from server
-        state.refreshToken = payload.refreshToken;// Update this line
+        state.accessToken = payload.accessToken;
+        state.refreshToken = payload.refreshToken;
+        localStorage.setItem('accessToken', payload.accessToken); // Store accessToken in localStorage
+        localStorage.setItem('refreshToken', payload.refreshToken); // Store refreshToken in localStorage
       })
       .addCase(loginUser.rejected, (state, { payload }) => {
         state.status = 'failed';
