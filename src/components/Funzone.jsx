@@ -8,6 +8,7 @@ import paddImg from "../img/padd.png";
 import ticImg from "../img/tic.webp";
 import motoImg from "../img/moto.jpeg";
 import subwayImg from "../img/subway.webp";
+
 import "./funzone.css";
 import "./global.css";
 
@@ -18,6 +19,14 @@ function Funzone() {
 
   const openMoto = () => {
     window.open("https://classwork.cc/moto-x3m-unblocked/", "_blank");
+  };
+
+  const openTrivia = () => {
+    window.open("https://micymike-auto-quiz.hf.space", "_blank");
+  };
+
+  const openTictac = () => {
+    window.open("https://micymike-starlets-tictactoe.hf.space", "_blank");
   };
 
   return (
@@ -64,7 +73,6 @@ function Funzone() {
       </div>
 
       {/* TRIVIA QUESTIONS */}
-
       <div className="abouttt">
         <div
           className="aboutTexttt"
@@ -87,10 +95,10 @@ function Funzone() {
             className="triviaa"
           />
 
-          <button class="playbutton">
+          <button className="playbutton" onClick={openTrivia}>
             <FontAwesomeIcon icon={faGamepad} />
             Play Now
-            <div class="arrow">››</div>
+            <div className="arrow">››</div>
           </button>
         </div>
       </div>
@@ -116,10 +124,10 @@ function Funzone() {
           data-aos-duration="2000"
         >
           <img src={ticImg} alt="TicTacToe Image" className="ticdoc" />
-          <button class="ticplaybutton">
+          <button className="ticplaybutton" onClick={openTictac}>
             <FontAwesomeIcon icon={faGamepad} />
             Play Now
-            <div class="arrow">››</div>
+            <div className="arrow">››</div>
           </button>
         </div>
       </div>
@@ -147,10 +155,10 @@ function Funzone() {
             className="subway"
           />
 
-          <button class="subplaybutton" onClick={openSubwaySurfers}>
+          <button className="subplaybutton" onClick={openSubwaySurfers}>
             <FontAwesomeIcon icon={faGamepad} />
             Play Now
-            <div class="arrow">››</div>
+            <div className="arrow">››</div>
           </button>
         </div>
       </div>
@@ -177,10 +185,10 @@ function Funzone() {
           data-aos-duration="2000"
         >
           <img src={motoImg} alt="MotoX3M Image" className="motodoc" />
-          <button class="motoplaybutton" onClick={openMoto}>
+          <button className="motoplaybutton" onClick={openMoto}>
             <FontAwesomeIcon icon={faGamepad} />
             Play Now
-            <div class="arrow">››</div>
+            <div className="arrow">››</div>
           </button>
         </div>
       </div>
