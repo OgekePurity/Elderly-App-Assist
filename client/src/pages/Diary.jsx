@@ -1,3 +1,5 @@
+// src/pages/Journal.js
+
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import JournalEntryList from '../components/Journal/DiaryEntryList';
