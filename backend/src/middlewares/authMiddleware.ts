@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 import { IUser } from '../models/User';
 
 interface AuthRequest extends Request {
-  user: any;
+  user?: any;
 }
 
 const authMiddleware = (req: AuthRequest, res: Response, next: NextFunction) => {
