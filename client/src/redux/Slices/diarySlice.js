@@ -1,3 +1,5 @@
+// src/redux/Slices/diarySlice.js
+
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
@@ -9,7 +11,7 @@ export const fetchJournals = createAsyncThunk('api/journals', async () => {
 
 export const addJournal = createAsyncThunk('journals/Journal', async (journal) => {
   const response = await axios.post('https://elderly-app-assist-8.onrender.com/api/journals/journal', journal);
-  return response.data;
+  return { ...response.data, id: response.data._id }; // Return the id of the newly created journal entry
 });
 
 export const updateJournal = createAsyncThunk('journals/updateJournal', async (journal) => {
@@ -18,10 +20,11 @@ export const updateJournal = createAsyncThunk('journals/updateJournal', async (j
   return response.data;
 });
 
-export const deleteJournal = createAsyncThunk('/journals/deleteJournal', async (id) => {
+export const deleteJournal = createAsyncThunk('journals/deleteJournal', async (id) => {
   await axios.delete(`https://elderly-app-assist-8.onrender.com/api/journals/${id}`);
   return id;
 });
+
 
 const journalSlice = createSlice({
   name: 'journals',
@@ -38,7 +41,7 @@ const journalSlice = createSlice({
       })
       .addCase(fetchJournals.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        state.items = action.payload;
+        state.items = action.payload.map((journal) => ({ ...journal, id: journal._id }));
       })
       .addCase(fetchJournals.rejected, (state, action) => {
         state.status = 'failed';
