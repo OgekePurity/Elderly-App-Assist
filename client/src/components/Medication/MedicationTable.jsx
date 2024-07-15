@@ -1,18 +1,7 @@
+// src/components/Medication/MedicationTable.js
+
 import React from 'react';
-import './MedicationTable.css'
-
-/**
- * @typedef {Object} Medication
- * @property {string} id
- * @property {string} name
- * @property {string} dosage
- * @property {string} frequency
- */
-
-/**
- * @typedef {Object} MedicationTableProps
- * @property {Medication[]} medications
- */
+import './MedicationTable.css';
 
 const MedicationTable = ({ medications }) => {
   return (

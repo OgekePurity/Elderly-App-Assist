@@ -1,3 +1,5 @@
+// src/features/Medications/medicationsSlice.js
+
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
@@ -41,6 +43,8 @@ const medicationsSlice = createSlice({
       })
       .addCase(addMedication.fulfilled, (state, action) => {
         state.medications.push(action.payload);
+        console.log('Medication added:', action.payload);
+        console.log('Updated state:', state.medications);
       });
   },
 });

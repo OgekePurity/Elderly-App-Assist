@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addJournal } from '../../redux/Slices/diarySlice';
+import { addJournal, fetchJournals } from '../../redux/Slices/diarySlice';
 import './addDiaryEntryForm.css';
 
 const AddJournalEntryForm = () => {
@@ -13,6 +13,7 @@ const AddJournalEntryForm = () => {
     e.preventDefault();
     try {
       await dispatch(addJournal({ title, content }));
+      await dispatch(fetchJournals()); // Fetch journals again to update the list
       setTitle('');
       setContent('');
     } catch (err) {
