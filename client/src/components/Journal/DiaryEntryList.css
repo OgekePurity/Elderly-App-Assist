@@ -35,5 +35,26 @@
   }
   .delete-button {
     color: red;
-    align-self: baseline;
+    margin-left: 20px;
+  }
+  .form-element{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 5px;
+  }
+  .form-element input{
+    margin-right: 10px;
+    border-radius: 5px;
+  }
+  .form-element textarea{
+    margin-right: 10px;
+    border-radius: 5px;
+    width: 500px;
+  }
+  .form-element button{
+    margin-right: 10px;
+    border-radius: 5px;
+    width: 100px;
+    background-color: #4a90e2;
   }

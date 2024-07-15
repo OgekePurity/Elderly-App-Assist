@@ -16,7 +16,7 @@ export const addJournal = createAsyncThunk('journals/Journal', async (journal) =
 
 export const updateJournal = createAsyncThunk('journals/updateJournal', async (journal) => {
   const { id, ...journalData } = journal; // Destructure the ID from journal object
-  const response = await axios.put(`https://elderly-app-assist-8.onrender.com/api/journals/${id}`, journalData); // Use journalData for PUT request
+  const response = await axios.put(`https://elderly-app-assist-8.onrender.com/api/journals/journal/${id}`, journalData); // Use journalData for PUT request
   return response.data;
 });
 
