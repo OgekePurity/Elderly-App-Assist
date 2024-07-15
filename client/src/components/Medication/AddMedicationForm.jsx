@@ -1,13 +1,11 @@
-// src/components/Medication/AddMedicationForm.js
-
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addMedication } from '../../features/Medications/medicationsSlice';
+import { addMedication, fetchMedications } from '../../features/Medications/medicationsSlice';
 import './AddMedicationForm.css';
 
 const AddMedicationForm = ({ userId }) => {
   const [medication, setMedication] = useState({
-    id: userId,
+    userId: userId,  // Ensure userId is included
     name: '',
     dosage: '',
     frequency: ''
@@ -24,7 +22,8 @@ const AddMedicationForm = ({ userId }) => {
     e.preventDefault();
     try {
       await dispatch(addMedication(medication));
-      setMedication({ id: userId, name: '', dosage: '', frequency: '' }); // Clear form after successful submission
+      await dispatch(fetchMedications());  // Fetch the updated list of medications
+      setMedication({ userId: userId, name: '', dosage: '', frequency: '' }); // Clear form after successful submission
     } catch (error) {
       console.error('Failed to add medication:', error);
     }

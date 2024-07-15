@@ -1,5 +1,3 @@
-// src/features/Medications/medicationsSlice.js
-
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
@@ -9,20 +7,25 @@ const initialState = {
   error: null,
 };
 
-// Thunk for fetching medications
 export const fetchMedications = createAsyncThunk('medications/fetchMedications', async () => {
   const response = await axios.get('https://elderly-app-assist-8.onrender.com/api/medications');
   return response.data;
 });
 
-// Thunk for adding a medication
-export const addMedication = createAsyncThunk(
-  'medications/addMedication',
-  async (newMedication) => {
-    const response = await axios.post('https://elderly-app-assist-8.onrender.com/api/medications', newMedication);
-    return response.data;
-  }
-);
+export const addMedication = createAsyncThunk('medications/addMedication', async (newMedication) => {
+  const response = await axios.post('https://elderly-app-assist-8.onrender.com/api/medications', newMedication);
+  return response.data;
+});
+
+export const deleteMedication = createAsyncThunk('medications/deleteMedication', async (id) => {
+  await axios.delete(`https://elderly-app-assist-8.onrender.com/api/medications/${id}`);
+  return id;
+});
+
+export const updateMedication = createAsyncThunk('medications/updateMedication', async (updatedMedication) => {
+  const response = await axios.put(`https://elderly-app-assist-8.onrender.com/api/medications/${updatedMedication._id}`, updatedMedication);
+  return response.data;
+});
 
 const medicationsSlice = createSlice({
   name: 'medications',
@@ -43,8 +46,15 @@ const medicationsSlice = createSlice({
       })
       .addCase(addMedication.fulfilled, (state, action) => {
         state.medications.push(action.payload);
-        console.log('Medication added:', action.payload);
-        console.log('Updated state:', state.medications);
+      })
+      .addCase(deleteMedication.fulfilled, (state, action) => {
+        state.medications = state.medications.filter((medication) => medication._id !== action.payload);
+      })
+      .addCase(updateMedication.fulfilled, (state, action) => {
+        const index = state.medications.findIndex((medication) => medication._id === action.payload._id);
+        if (index !== -1) {
+          state.medications[index] = action.payload;
+        }
       });
   },
 });

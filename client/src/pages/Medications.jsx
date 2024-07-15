@@ -1,5 +1,3 @@
-// src/pages/Medications.js
-
 import { Link } from 'react-router-dom';
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -12,15 +10,11 @@ import logoImg from "../img/logo.png";
 function Medications() {
   const dispatch = useDispatch();
   const medications = useSelector((state) => state.medications.medications);
+  const userId = localStorage.getItem('userId') || '';
 
   useEffect(() => {
     dispatch(fetchMedications());
   }, [dispatch]);
-
-  useEffect(() => {
-    // Re-fetch medications when the medications state changes
-    dispatch(fetchMedications());
-  }, [medications, dispatch]);
 
   return (
     <>
@@ -41,10 +35,8 @@ function Medications() {
         </div>
       </div>
       <div className="medications">
-        <div className="links">
-        </div>
         <h1>Medications</h1>
-        <AddMedicationForm userId={localStorage.getItem('userId') || ''} />
+        <AddMedicationForm userId={userId} />
         <MedicationTable medications={medications} />
       </div>
     </>
