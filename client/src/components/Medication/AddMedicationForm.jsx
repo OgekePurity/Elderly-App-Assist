@@ -5,7 +5,7 @@ import './AddMedicationForm.css';
 
 const AddMedicationForm = ({ userId }) => {
   const [medication, setMedication] = useState({
-    userId: userId,  // Ensure userId is included
+    userId: userId,
     name: '',
     dosage: '',
     frequency: ''
@@ -18,12 +18,12 @@ const AddMedicationForm = ({ userId }) => {
     setMedication((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => { // Corrected from "onst" to "const"
     e.preventDefault();
     try {
       await dispatch(addMedication(medication));
-      await dispatch(fetchMedications());  // Fetch the updated list of medications
-      setMedication({ userId: userId, name: '', dosage: '', frequency: '' }); // Clear form after successful submission
+      await dispatch(fetchMedications());
+      setMedication({ userId: userId, name: '', dosage: '', frequency: '' });
     } catch (error) {
       console.error('Failed to add medication:', error);
     }

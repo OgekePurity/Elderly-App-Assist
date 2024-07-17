@@ -1,13 +1,12 @@
-import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
+import { Request, Response, NextFunction } from 'express';
 import { IUser } from '../models/User';
 
 interface AuthRequest extends Request {
-  user?: any;
+  user?: IUser; // Changed to IUser type for better type safety
 }
 
 const authMiddleware = (req: AuthRequest, res: Response, next: NextFunction) => {
-
   const authHeader = req.headers.authorization || req.headers.Authorization;
 
   if (!authHeader || !(authHeader as string).toLowerCase().startsWith('bearer ')) {

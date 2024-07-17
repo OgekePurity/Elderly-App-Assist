@@ -15,14 +15,28 @@ export const getMedications = async (req: Request, res: Response) => {
 
 export const addMedication = async (req: Request, res: Response) => {
   try {
+    console.log('Received request to add medication:', req.body); // Log request body
     const { name, dosage, frequency } = req.body;
-    const userId = (req.user as IUser)._id; // Type assertion
+    const user = req.user as IUser; // Type assertion
 
-    const medication = new Medication({ name, dosage, frequency, user: userId });
+    console.log('Authenticated user:', user); // Log authenticated user
+
+    if (!user) {
+      console.error('User not authenticated');
+      return res.status(401).json({ error: 'User not authenticated' });
+    }
+
+    if (!name || !dosage || !frequency) {
+      console.error('Missing required fields:', { name, dosage, frequency });
+      return res.status(400).json({ error: 'Missing required fields' });
+    }
+
+    const medication = new Medication({ name, dosage, frequency, user: user._id });
     await medication.save();
+    console.log('Medication added successfully:', medication); // Log successful addition
     res.status(201).json(medication);
   } catch (error) {
-    console.error('Error adding medication:', error);
+    console.error('Error adding medication:', error); // Improved logging
     res.status(500).json({ error: 'Internal server error' });
   }
 };

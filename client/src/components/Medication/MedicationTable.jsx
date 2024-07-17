@@ -20,10 +20,6 @@ const MedicationTable = () => {
   }, [dispatch]);
 
   const handleDelete = async (id) => {
-    if (!id) {
-      console.error('Invalid medication ID for delete operation.');
-      return;
-    }
     try {
       await dispatch(deleteMedication(id)).unwrap();
       dispatch(fetchMedications()); // Fetch the updated list of medications
@@ -43,10 +39,6 @@ const MedicationTable = () => {
   };
 
   const handleUpdate = async () => {
-    if (!editedMedication._id) {
-      console.error('Invalid medication ID for update operation.');
-      return;
-    }
     try {
       await dispatch(updateMedication(editedMedication)).unwrap();
       setEditMode(null);
@@ -74,7 +66,7 @@ const MedicationTable = () => {
                 <input
                   type="text"
                   name="name"
-                  value={editedMedication.name || ''}
+                  value={editedMedication.name}
                   onChange={handleEditChange}
                 />
               ) : (
@@ -86,7 +78,7 @@ const MedicationTable = () => {
                 <input
                   type="text"
                   name="dosage"
-                  value={editedMedication.dosage || ''}
+                  value={editedMedication.dosage}
                   onChange={handleEditChange}
                 />
               ) : (
@@ -98,7 +90,7 @@ const MedicationTable = () => {
                 <input
                   type="text"
                   name="frequency"
-                  value={editedMedication.frequency || ''}
+                  value={editedMedication.frequency}
                   onChange={handleEditChange}
                 />
               ) : (
