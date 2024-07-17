@@ -7,25 +7,73 @@ const initialState = {
   error: null,
 };
 
-export const fetchMedications = createAsyncThunk('medications/fetchMedications', async () => {
-  const response = await axios.get('https://elderly-app-assist-8.onrender.com/api/medications');
-  return response.data;
+export const fetchMedications = createAsyncThunk(
+  'medications/fetchMedications',
+  async (_, { getState }) => {
+    const state = getState();
+    const token = state.auth.accessToken;
+
+    const response = await axios.get('https://elderly-app-assist-8.onrender.com/api/medications', {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    return response.data;
+  }
+);
+
+export const addMedication = createAsyncThunk('medications/addMedication', async (newMedication, { rejectWithValue }) => {
+  try {
+    const response = await axios.post('https://elderly-app-assist-8.onrender.com/api/medications', newMedication, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Error adding medication:', error.response?.data || error.message); // Enhanced error logging
+    return rejectWithValue(error.response?.data || error.message);
+  }
 });
 
-export const addMedication = createAsyncThunk('medications/addMedication', async (newMedication) => {
-  const response = await axios.post('https://elderly-app-assist-8.onrender.com/api/medications', newMedication);
-  return response.data;
-});
 
-export const deleteMedication = createAsyncThunk('medications/deleteMedication', async (id) => {
-  await axios.delete(`https://elderly-app-assist-8.onrender.com/api/medications/${id}`);
-  return id;
-});
 
-export const updateMedication = createAsyncThunk('medications/updateMedication', async (updatedMedication) => {
-  const response = await axios.put(`https://elderly-app-assist-8.onrender.com/api/medications/${updatedMedication._id}`, updatedMedication);
-  return response.data;
-});
+export const deleteMedication = createAsyncThunk(
+  'medications/deleteMedication',
+  async (id, { getState }) => {
+    const state = getState();
+    const token = state.auth.accessToken;
+
+    await axios.delete(`https://elderly-app-assist-8.onrender.com/api/medications/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    return id;
+  }
+);
+
+export const updateMedication = createAsyncThunk(
+  'medications/updateMedication',
+  async (updatedMedication, { getState }) => {
+    const state = getState();
+    const token = state.auth.accessToken;
+
+    const response = await axios.put(
+      `https://elderly-app-assist-8.onrender.com/api/medications/${updatedMedication._id}`,
+      updatedMedication,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    return response.data;
+  }
+);
 
 const medicationsSlice = createSlice({
   name: 'medications',

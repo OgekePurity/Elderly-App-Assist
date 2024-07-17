@@ -10,3 +10,4 @@ router.put('/:id', authMiddleware, updateMedication);
 router.delete('/:id', authMiddleware, deleteMedication); 
 
 export default router;
+  

@@ -12,6 +12,6 @@ const medicationSchema: Schema = new Schema({
     dosage: { type: String, required: true },
     frequency: { type: String, required: true },
     user: { type: Schema.Types.ObjectId, ref: 'User', required: true } // Reference to User model
-});
+});  
 
 export default mongoose.model<MedicationModel>('Medication', medicationSchema);
