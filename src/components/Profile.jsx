@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { UserContext } from "./UserContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashAlt } from "@fortawesome/free-solid-svg-icons"; // Correct icon import
+import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import logoImg from "../img/logo.png";
 import blankImg from "../img/blank.png";
 import "./profile.css";
@@ -10,9 +10,11 @@ import "./global.css";
 
 function Profile() {
   const { email, setEmail } = useContext(UserContext);
+  const navigate = useNavigate();
 
   const handleDelete = () => {
     setEmail("");
+    navigate("/"); // Navigate to the Login/Signup page
   };
 
   const Appointment = () => {
@@ -77,14 +79,12 @@ function Profile() {
         {/* DELETE BUTTON */}
         <button className="Btnn" onClick={handleDelete}>
           <div className="signn">
-            <FontAwesomeIcon icon={faTrashAlt} className="bi bi-trash3-fill" />{" "}
-            {/* Correct FontAwesome icon usage */}
+            <FontAwesomeIcon icon={faTrashAlt} className="bi bi-trash3-fill" />
           </div>
           <div className="textt">Delete Profile</div>
         </button>
 
         {/* FORM SUBMISSION */}
-
         <div className="form-containerr">
           <form
             className="formm"
@@ -109,9 +109,7 @@ function Profile() {
                 rows="10"
                 id="textarea"
                 name="textarea"
-              >
-                {" "}
-              </textarea>
+              ></textarea>
             </div>
             <button type="submit" className="form-submit-btnn">
               Submit
@@ -121,7 +119,7 @@ function Profile() {
 
         {/* BOOK APPOINTMENT BUTTON */}
         <button className="appbutton" onClick={Appointment}>
-          <span className="appbutton-content">Book Appointment </span>
+          <span className="appbutton-content">Book Appointment</span>
         </button>
       </div>
     </div>
