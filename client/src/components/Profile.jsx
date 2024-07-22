@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { UserContext } from "./UserContext";
-import { Link, useNavigate  } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignOut } from "@fortawesome/free-solid-svg-icons";
 import logoImg from "../img/logo.png";
@@ -41,9 +41,7 @@ function Profile() {
           <img src={logoImg} alt="logo" />
         </div>
         <div className="links">
-          <Link to="/home" className="mainlink">
-            Home
-          </Link>
+          <Link to="/home" className="mainlink">Home</Link>
           <Link to="/about">About</Link>
           <Link to="/blog">Blog</Link>
           <Link to="/funzone">FUNZONE</Link>
@@ -51,10 +49,9 @@ function Profile() {
         </div>
       </div>
 
-      {/* PROFILE CARD */}
       <div className="cardinal">
         <div className="blanky">
-          <img src={blankImg} alt="MY PROFILE" />
+          <img src={profileImg} alt="Profile" />
         </div>
 
         <div className="holderr">
@@ -89,7 +86,6 @@ function Profile() {
           </div>
         </div>
 
-        {/* DELETE BUTTON */}
         <button className="Btnn" onClick={handleDelete}>
           <div className="signn">
             <FontAwesomeIcon icon={faSignOut} className="bi bi-trash3-fill" />
@@ -97,12 +93,8 @@ function Profile() {
           <div className="textt">LogOut</div>
         </button>
 
-        {/* FORM SUBMISSION */}
         <div className="form-containerr">
-
-          <form className="formm" 
-            action="https://formspree.io/f/xldrddbn"
-            method="POST">
+          <form className="formm" action="https://formspree.io/f/xldrddbn" method="POST">
             <div className="form-groupp">
               <label htmlFor="image-upload">Upload Profile Image</label>
               <input
@@ -111,8 +103,7 @@ function Profile() {
                 accept="image/*"
                 onChange={handleImageChange}
               />
-            </div>   
-
+            </div>
             <div className="form-groupp">
               <label htmlFor="email">Your Email</label>
               <input
@@ -139,7 +130,6 @@ function Profile() {
           </form>
         </div>
 
-        {/* BOOK APPOINTMENT BUTTON */}
         <button className="appbutton" onClick={Appointment}>
           <span className="appbutton-content">Book Appointment</span>
         </button>
