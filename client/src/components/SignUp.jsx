@@ -1,6 +1,4 @@
-import React, { useEffect, useContext } from "react";
-import{ useState } from 'react'
-import { useRef } from "react";
+import React, { useEffect, useContext, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "./UserContext";
 import { useDispatch, useSelector } from "react-redux";
@@ -206,7 +204,7 @@ export default function SignUp() {
   );
 }
 
-import React, { useEffect, useContext } from "react";
+/* import React, { useEffect, useContext } from "react";
 import{ useState } from 'react'
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
@@ -335,7 +333,7 @@ export default function SignUp() {
           <form onSubmit={handleCreateAccount}>
             <h1>Create Account</h1>
             <div className="social icons">
-              {/* This part is useless but without it the code doesn't run */}
+              
             </div>
             <span>Use your email for registration</span>
             <label htmlFor="name">Name</label>
@@ -369,7 +367,7 @@ export default function SignUp() {
           <form onSubmit={handleLogin}>
             <h1 className="head">Login</h1>
             <div className="social-icons">
-              {/* This part is useless but without it the code doesn't run */}
+              
             </div>
             <span className="span">Use your email for registration</span>
             <label htmlFor="login-email">Email</label>
@@ -413,3 +411,4 @@ export default function SignUp() {
     </div>
   );
 }
+ */
