@@ -1,8 +1,9 @@
 import { Request, Response } from 'express';
 import Medication from '../models/Medication';
 import { IUser } from '../models/User';
+import { IRequest } from '../../types/types';
 
-export const getMedications = async (req: Request, res: Response) => {
+export const getMedications  = async (req: IRequest, res: Response) => {
   try {
     const userId = (req.user as IUser)._id; // Type assertion
     const medications = await Medication.find({ user: userId });
@@ -13,7 +14,7 @@ export const getMedications = async (req: Request, res: Response) => {
   }
 };
 
-export const addMedication = async (req: Request, res: Response) => {
+export const addMedication = async (req: IRequest, res: Response) => {
   try {
     console.log('Received request to add medication:', req.body); // Log request body
     const { name, dosage, frequency } = req.body;
@@ -41,7 +42,7 @@ export const addMedication = async (req: Request, res: Response) => {
   }
 };
 
-export const updateMedication = async (req: Request, res: Response) => {
+export const updateMedication = async (req: IRequest, res: Response) => {
   try {
     console.log('Updating medication with ID:', req.params.id); // Log ID
     const { name, dosage, frequency } = req.body;
@@ -64,7 +65,7 @@ export const updateMedication = async (req: Request, res: Response) => {
   }
 };
 
-export const deleteMedication = async (req: Request, res: Response) => {
+export const deleteMedication = async (req: IRequest, res: Response) => {
   try {
     const userId = (req.user as IUser)._id; // Type assertion
 

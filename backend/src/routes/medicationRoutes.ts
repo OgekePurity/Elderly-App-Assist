@@ -1,13 +1,22 @@
-import { Router } from 'express';
+import express, { Router } from 'express';
 import { getMedications, addMedication, updateMedication, deleteMedication } from '../controllers/medicationController';
-import authMiddleware from '../middlewares/authMiddleware';
 
-const router = Router();
+const router: Router = express.Router();
 
-router.get('/', authMiddleware, getMedications); 
-router.post('/', authMiddleware, addMedication); 
-router.put('/:id', authMiddleware, updateMedication); 
-router.delete('/:id', authMiddleware, deleteMedication); 
+router.get('/', async (req, res) => {
+  await getMedications(req, res);
+});
+
+router.post('/', async (req, res) => {
+  await addMedication(req, res);
+});
+
+router.put('/:id', async (req, res) => {
+  await updateMedication(req, res);
+});
+
+router.delete('/:id', async (req, res) => {
+  await deleteMedication(req, res);
+});
 
 export default router;
-  
