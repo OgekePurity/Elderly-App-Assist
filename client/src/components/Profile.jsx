@@ -28,7 +28,6 @@ function Profile() {
       };
       reader.readAsDataURL(file);
     }
-
   };
 
   const Appointment = () => {
@@ -112,8 +111,7 @@ function Profile() {
                 accept="image/*"
                 onChange={handleImageChange}
               />
-            </div>
-            {/* Existing form fields */}
+            </div>   
 
             <div className="form-groupp">
               <label htmlFor="email">Your Email</label>
