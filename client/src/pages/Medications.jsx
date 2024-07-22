@@ -5,7 +5,7 @@ import MedicationTable from '../components/Medication/MedicationTable';
 import AddMedicationForm from '../components/Medication/AddMedicationForm';
 import { fetchMedications } from '../features/Medications/medicationsSlice';
 import './Medications.css';
-import logoImg from "../img/logo.png";
+import logoImg from "../img/logo.png"; 
 
 function Medications() {
   const dispatch = useDispatch();
