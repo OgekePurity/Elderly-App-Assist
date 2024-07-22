@@ -1,6 +1,6 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { UserContext } from "./UserContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import logoImg from "../img/logo.png";
@@ -10,22 +10,11 @@ import "./global.css";
 
 function Profile() {
   const { email, setEmail } = useContext(UserContext);
-  const [profileImg, setProfileImg] = useState(blankImg);
+  const navigate = useNavigate();
 
   const handleDelete = () => {
     setEmail("");
-    setProfileImg(blankImg)
-  };
-
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setProfileImg(reader.result);
-      };
-      reader.readAsDataURL(file);
-    }
+    navigate("/"); // Navigate to the Login/Signup page
   };
 
   const Appointment = () => {
@@ -39,18 +28,20 @@ function Profile() {
           <img src={logoImg} alt="logo" />
         </div>
         <div className="links">
-          <Link to="/home" className="mainlink">Home</Link>
+          <Link to="/home" className="mainlink">
+            Home
+          </Link>
           <Link to="/about">About</Link>
           <Link to="/blog">Blog</Link>
-          <Link to="/journal">Journal</Link>
           <Link to="/funzone">FUNZONE</Link>
+          <Link to="/journal">Journal</Link>
         </div>
       </div>
 
       {/* PROFILE CARD */}
       <div className="cardinal">
         <div className="blanky">
-          <img src={profileImg} alt="Profile" />
+          <img src={blankImg} alt="MY PROFILE" />
         </div>
 
         <div className="holderr">
@@ -93,19 +84,13 @@ function Profile() {
           <div className="textt">Delete Profile</div>
         </button>
 
-        {/* IMAGE UPLOAD FORM */}
+        {/* FORM SUBMISSION */}
         <div className="form-containerr">
-          <form className="formm">
-            <div className="form-groupp">
-              <label htmlFor="image-upload">Upload Profile Image</label>
-              <input
-                type="file"
-                id="image-upload"
-                accept="image/*"
-                onChange={handleImageChange}
-              />
-            </div>
-            {/* Existing form fields */}
+          <form
+            className="formm"
+            action="https://formspree.io/f/xldrddbn"
+            method="POST"
+          >
             <div className="form-groupp">
               <label htmlFor="email">Your Email</label>
               <input
@@ -124,9 +109,7 @@ function Profile() {
                 rows="10"
                 id="textarea"
                 name="textarea"
-              >
-                {" "}
-              </textarea>
+              ></textarea>
             </div>
             <button type="submit" className="form-submit-btnn">
               Submit
@@ -136,7 +119,7 @@ function Profile() {
 
         {/* BOOK APPOINTMENT BUTTON */}
         <button className="appbutton" onClick={Appointment}>
-          <span className="appbutton-content">Book Appointment </span>
+          <span className="appbutton-content">Book Appointment</span>
         </button>
       </div>
     </div>
