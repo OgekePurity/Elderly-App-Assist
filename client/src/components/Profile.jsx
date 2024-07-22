@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { UserContext } from "./UserContext";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate  } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import { faSignOut } from "@fortawesome/free-solid-svg-icons";
 import logoImg from "../img/logo.png";
 import blankImg from "../img/blank.png";
 import "./profile.css";
@@ -10,11 +10,25 @@ import "./global.css";
 
 function Profile() {
   const { email, setEmail } = useContext(UserContext);
+  const [profileImg, setProfileImg] = useState(blankImg);
   const navigate = useNavigate();
 
   const handleDelete = () => {
     setEmail("");
-    navigate("/"); // Navigate to the Login/Signup page
+    setProfileImg(blankImg);
+    navigate("/");
+  };
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setProfileImg(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+
   };
 
   const Appointment = () => {
@@ -79,18 +93,28 @@ function Profile() {
         {/* DELETE BUTTON */}
         <button className="Btnn" onClick={handleDelete}>
           <div className="signn">
-            <FontAwesomeIcon icon={faTrashAlt} className="bi bi-trash3-fill" />
+            <FontAwesomeIcon icon={faSignOut} className="bi bi-trash3-fill" />
           </div>
-          <div className="textt">Delete Profile</div>
+          <div className="textt">LogOut</div>
         </button>
 
         {/* FORM SUBMISSION */}
         <div className="form-containerr">
-          <form
-            className="formm"
+
+          <form className="formm" 
             action="https://formspree.io/f/xldrddbn"
-            method="POST"
-          >
+            method="POST">
+            <div className="form-groupp">
+              <label htmlFor="image-upload">Upload Profile Image</label>
+              <input
+                type="file"
+                id="image-upload"
+                accept="image/*"
+                onChange={handleImageChange}
+              />
+            </div>
+            {/* Existing form fields */}
+
             <div className="form-groupp">
               <label htmlFor="email">Your Email</label>
               <input

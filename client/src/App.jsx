@@ -11,7 +11,7 @@ import Funzone from "./components/Funzone";
 import Diary from './pages/Diary'
 import { UserProvider } from "./components/UserContext";
 import ProtectedRoute from "./PrivateRoute";
-import Medications from './pages/Medications'
+import Medications from './components/MedicationPage'
 
 function App() {
   useEffect(() => {
