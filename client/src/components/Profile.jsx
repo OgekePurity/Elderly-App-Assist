@@ -28,7 +28,6 @@ function Profile() {
       };
       reader.readAsDataURL(file);
     }
-    navigate("/"); // Navigate to the Login/Signup page
   };
 
   const Appointment = () => {
@@ -100,6 +99,7 @@ function Profile() {
 
         {/* FORM SUBMISSION */}
         <div className="form-containerr">
+
           <form className="formm" 
             action="https://formspree.io/f/xldrddbn"
             method="POST">
@@ -111,14 +111,8 @@ function Profile() {
                 accept="image/*"
                 onChange={handleImageChange}
               />
-            </div>
-            {/* Existing form fields */}
+            </div>   
 
-          <form
-            className="formm"
-            action="https://formspree.io/f/xldrddbn"
-            method="POST"
-          >
             <div className="form-groupp">
               <label htmlFor="email">Your Email</label>
               <input
