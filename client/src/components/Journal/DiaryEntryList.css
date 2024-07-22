@@ -1,0 +1,60 @@
+.journal-entry-list {
+    margin-top: 20px;
+  
+  }
+  
+  .journal-entry-list h2 {
+    color: #4a90e2;
+  }
+  
+  .journal-entry-item {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .journal-entry-item h3 {
+    margin-top: 0;
+    color: #333;
+  }
+  
+  .journal-entry-date {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  
+  .journal-entry-content {
+    color: #333;
+    white-space: pre-wrap;
+  }
+  .delete-button {
+    color: red;
+    margin-left: 20px;
+  }
+  .form-element{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 5px;
+  }
+  .form-element input{
+    margin-right: 10px;
+    border-radius: 5px;
+  }
+  .form-element textarea{
+    margin-right: 10px;
+    border-radius: 5px;
+    width: 500px;
+  }
+  .form-element button{
+    margin-right: 10px;
+    border-radius: 5px;
+    width: 100px;
+    background-color: #4a90e2;
+  }

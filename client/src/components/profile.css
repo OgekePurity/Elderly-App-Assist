@@ -1,0 +1,358 @@
+.nav {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1rem 0;
+  z-index: 1000;
+  background: #fff;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* CARD STYLING */
+.cardinal {
+  display: flex;
+  position: absolute;
+  top: 70px;
+  left: 160px;
+  width: 65rem;
+  height: 90rem;
+  margin-top: 6rem;
+  background: white;
+  border-radius: 10px;
+  transition: border-radius 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.cardinal {
+  box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0 0 0 2px rgb(190, 190, 190),
+    0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+}
+
+.blanky {
+  display: flex;
+  position: absolute;
+  width: 12rem;
+  height: 12rem;
+  top: 3rem;
+  left: 26rem;
+}
+
+/* STATUS CARD */
+.cardd {
+  position: absolute;
+  width: 44rem;
+  top: 21rem;
+  left: 10rem;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.heada {
+  background-color: #512da8;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  font-size: 18px;
+}
+
+.bodi {
+  padding: 20px;
+}
+
+.skill {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.skill-name {
+  width: 120px;
+  font-size: 16px;
+}
+
+.skill-level {
+  width: 160px;
+  height: 10px;
+  background-color: #d4cccc;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-left: 20px;
+}
+
+.skill-percent {
+  background-color: #512da8;
+  height: 100%;
+}
+
+.skill-percent-number {
+  margin-left: 20px;
+  font-size: 16px;
+}
+
+.holderr {
+  display: flex;
+  position: absolute;
+  border: 1px solid black;
+  top: 16rem;
+  left: 18rem;
+  width: 30rem;
+  height: 2.8rem;
+  border-radius: 10px;
+}
+
+.words {
+  position: absolute;
+  top: 0.4rem;
+  left: 0.6rem;
+  font-weight: 50px;
+  font-size: 20px;
+}
+
+.actual {
+  position: absolute;
+  top: 0.4rem;
+  left: 7.2rem;
+  font-size: 20px;
+  font-weight: 50px;
+}
+
+/* DELETE BUTTON */
+.Btnn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  top: 2rem;
+  left: 1.2rem;
+  overflow: hidden;
+  transition-duration: 0.3s;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+  background: #512da8;
+  background: linear-gradient(250deg, #e6079b 35%, #512da8 65%);
+}
+
+/* plus sign */
+.signn {
+  width: 100%;
+  transition-duration: 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* .signn svg {
+  width: 17px;
+} */
+
+.signn svg path {
+  fill: white;
+}
+/* text */
+.textt {
+  position: absolute;
+  right: 0%;
+  width: 0%;
+  opacity: 0;
+  color: #fff;
+  font-size: 1.2em;
+  font-weight: 600;
+  transition-duration: 0.3s;
+}
+/* hover effect on button width */
+.Btnn:hover {
+  width: 200px;
+  border-radius: 40px;
+  transition-duration: 0.3s;
+}
+
+.Btnn:hover .signn {
+  width: 30%;
+  transition-duration: 0.3s;
+  padding-left: 20px;
+}
+/* hover effect button's text */
+.Btnn:hover .textt {
+  opacity: 1;
+  width: 70%;
+  transition-duration: 0.3s;
+  padding-right: 10px;
+}
+/* button click effect*/
+.Btnn:active {
+  transform: translate(2px, 2px);
+}
+
+/* INPUT FORM */
+.form-containerr {
+  width: 700px;
+  height: 390px;
+  background: linear-gradient(#fff, #fff) padding-box,
+    linear-gradient(145deg, transparent 35%, #e81cff, #40c9ff) border-box;
+  border: 2px solid transparent;
+  padding: 32px 24px;
+  position: absolute;
+  top: 38rem;
+  left: 10rem;
+  font-size: 14px;
+  font-family: inherit;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-sizing: border-box;
+  border-radius: 16px;
+  background-size: 200% 100%;
+  animation: gradient 5s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.form-containerr button:active {
+  scale: 0.95;
+}
+
+.form-containerr .formm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-containerr .form-groupp {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.form-containerr .form-groupp label {
+  display: block;
+  margin-bottom: 5px;
+  color: #2c2b2e;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.form-containerr .form-groupp input {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 8px;
+  color: #0f0f0f;
+  font-size: 1.2rem;
+  font-family: inherit;
+  background-color: transparent;
+  border: 1px solid #414141;
+}
+
+.form-containerr .form-groupp textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 8px;
+  resize: none;
+  color: #0e0d0d;
+  font-size: 1.2rem;
+  height: 96px;
+  border: 1px solid #414141;
+  background-color: transparent;
+  font-family: inherit;
+}
+
+.form-containerr .form-groupp input::placeholder {
+  opacity: 0.5;
+}
+
+.form-containerr .form-groupp input:focus {
+  outline: none;
+  border-color: #e81cff;
+}
+
+.form-containerr .form-groupp textarea:focus {
+  outline: none;
+  border-color: #e81cff;
+}
+
+.form-containerr .form-submit-btnn {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  align-self: flex-start;
+  font-family: inherit;
+  color: #e6dddd;
+  font-weight: 600;
+  width: 40%;
+  background: #242222;
+  border: 1px solid #414141;
+  padding: 12px 16px;
+  font-size: inherit;
+  gap: 8px;
+  margin-top: 8px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.form-containerr .form-submit-btnn:hover {
+  background-color: #726f6f;
+  border-color: #fff;
+}
+
+/* APPOINTMENT BUTTON */
+.appbutton {
+  position: absolute;
+  overflow: hidden;
+  top: 66rem;
+  left: 10rem;
+  height: 3rem;
+  font-weight: 600;
+  font-size: 1.2rem;
+  padding: 0 2rem;
+  border-radius: 1.5rem;
+  background: #5a575c;
+  background-size: 400%;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.appbutton:hover::before {
+  transform: scaleX(1);
+}
+
+.appbutton-content {
+  position: relative;
+  z-index: 1;
+}
+
+.appbutton::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  width: 100%;
+  height: inherit;
+  border-radius: inherit;
+  background: linear-gradient(
+    82.3deg,
+    rgba(150, 93, 233, 1) 10.8%,
+    rgba(99, 88, 238, 1) 94.3%
+  );
+  transition: all 0.475s;
+}
